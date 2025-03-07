@@ -1,11 +1,11 @@
-import {io} from "socket.io-client";
+import { io } from "socket.io-client";
 
 export const initSocket = async () => {
-    const option = {
-        "force new connection" : true,
-         reconnectionAttempt : true,
-         timeout : 10000,
-         transports : ["websocket"],
+    const options = {
+        forceNew: true,  
+        reconnectionAttempts: 5,  
+        timeout: 10000,
+        transports: ["websocket"]
     };
-    return io("https://devsync-xxt8.onrender.com",option);
-}
+    return io(import.meta.env.VITE_BACKEND_URL || "https://devsync-xxt8.onrender.com", options);
+};

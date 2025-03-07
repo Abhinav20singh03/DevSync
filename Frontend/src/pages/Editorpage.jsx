@@ -1,5 +1,5 @@
 import React, { act, useEffect, useRef, useState } from 'react';
-import './EditorPage.css';
+import './Editorpage.css';
 import { useLocation, useParams } from 'react-router-dom';
 import devsynclogo from '../assets/DevSync_logo_cyan_text.png';
 import Clients from '../Components/Clients';

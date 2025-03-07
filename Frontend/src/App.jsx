@@ -5,16 +5,17 @@ import {Routes,Route} from "react-router-dom"
 import './App.css'
 import Home from './pages/Home'
 import Editorpage from './pages/Editorpage'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
   return (
     <>
+    <ToastContainer position="top-right" autoClose={3000} />
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/editor' element={<Editorpage/>}/>
+        <Route path='/editor/:roomId' element={<Editorpage/>}/>
       </Routes>
-      <div className="Footer">Built by Abhinav Singh</div>
     </>
   )
 }

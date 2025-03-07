@@ -3,14 +3,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #18181b;
+    background-color: #1C1B27;
     flex-direction: column;
   }
   
   .card {
     width: 100%;
     max-width: 24rem;
-    background-color: rgba(24, 24, 27, 0.5);
+    background-color: #1C1B27;
     border: 1px solid #27272a;
     padding: 1.5rem;
     border-radius: 8px;

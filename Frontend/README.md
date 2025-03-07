@@ -1,6 +1,6 @@
 # **DevSync – Collaborative Code Editor** 📝💻  
 
-![DevSync Banner](frontend/src/assets/page1.png) <!-- Optional: Add a project banner -->
+![DevSync Banner](https://your-image-url.com) <!-- Optional: Add a project banner -->
 
 > **Real-time collaborative code editor powered by WebSockets and Socket.io**  
 > Built with **React, Express, Node.js, and Socket.io**, DevSync enables multiple users to **code together in real time** with seamless synchronization.
@@ -41,8 +41,8 @@
 
 ## **📸 Screenshots**  
 
-![Homepage](frontend/src/assets/page1.png) <!-- Add images of your project -->
-![Editor Page](frontend/src/assets/page2.png)  
+![Homepage](https://your-image-url.com) <!-- Add images of your project -->
+![Editor Page](https://your-image-url.com)  
 
 ---
 

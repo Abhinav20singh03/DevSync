@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Codemirror from "codemirror";
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/dracula.css";
@@ -9,6 +9,9 @@ import "./Editor.css";
 import ACTIONS from '../actions';
 
 const Editor = ({ socketRef, roomId, onCodeChange }) => {
+
+    const [result,setResult] = useState("");
+    
     const editorRef = useRef(null); 
     const textareaRef = useRef(null); 
 
@@ -39,12 +42,30 @@ const Editor = ({ socketRef, roomId, onCodeChange }) => {
         }
 
 
-        
-        
-
-
-       
+    
     }, []);
+    const runCode = () => {
+        const code = editorRef.current.getValue();
+       // Store original console.log
+    const originalConsoleLog = console.log;
+    let output = "";
+
+    // Override console.log to capture logs
+    console.log = (...args) => {
+        output += args.join(" ") + "\n"; // Append logs to output string
+    };
+
+    try {
+        new Function(code)(); // Execute user code
+        setResult(output);
+    } catch (error) {
+       setResult(error.message);
+    }
+
+    // Restore original console.log
+    console.log = originalConsoleLog;
+        }
+    
 
 
     useEffect(()=>{
@@ -64,7 +85,18 @@ const Editor = ({ socketRef, roomId, onCodeChange }) => {
 
     return (
         <div className='component-container'>
-            <textarea ref={textareaRef} id='realTimeCodeEditor'></textarea>
+            <textarea ref={textareaRef} className='realTimeCodeEditor'></textarea>
+            <div className='output'> 
+            Output
+            <button className='run-button' onClick={runCode}>Run Code</button>
+            
+            <div className='output-window'>
+            
+            {
+                result
+            }
+            </div>
+            </div>
         </div>
     );
 };

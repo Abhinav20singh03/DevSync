@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 import dotenv from "dotenv"; 
 import ACTIONS from "./src/actions.js";
 
-dotenv.config(); // Load environment variables
+dotenv.config(); 
 
 const app = express();
 const server = http.createServer(app);

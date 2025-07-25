@@ -1,148 +1,188 @@
-# **DevSync – Collaborative Code Editor** 📝💻  
+# 🚀 DevSync
+![Built with Socket.io](https://img.shields.io/badge/Socket.io-enabled-blue)
 
-![DevSync Banner](https://your-image-url.com) <!-- Optional: Add a project banner -->
-
-> **Real-time collaborative code editor powered by WebSockets and Socket.io**  
-> Built with **React, Express, Node.js, and Socket.io**, DevSync enables multiple users to **code together in real time** with seamless synchronization.
+**DevSync** is a real-time, collaborative code editor built with **WebSockets** and **Socket.io**. Multiple users can join private rooms, edit code simultaneously, and see each other’s changes live.
 
 ---
 
-## **🌟 Features**  
+## 📑 Table of Contents
 
-✅ **Real-Time Code Sharing** – Instant code updates across connected users.  
-✅ **Multiple Room Support** – Users can create and join private coding rooms.  
-✅ **Live Cursor Tracking** – See who is editing in real time (Future Update).  
-✅ **Syntax Highlighting** – CodeMirror-based editor with JavaScript support.  
-✅ **Persistent Session Handling** – Auto-syncs code for new participants.  
-✅ **User Presence Detection** – Shows active users in each room.  
-✅ **Clipboard Sharing** – Easily copy room IDs for quick collaboration.  
-✅ **Built with WebSockets** – Low latency, high-performance collaboration.  
-
----
-
-## **🚀 Tech Stack**
-### **Frontend** 🌐  
-- **React.js** – UI Framework  
-- **Vite** – Fast Build Tool  
-- **CodeMirror** – Code Editor  
-- **React Router** – Navigation  
-- **React Toastify** – Notifications  
-
-### **Backend** 🛠  
-- **Node.js & Express.js** – API & Server  
-- **Socket.io** – Real-time communication  
-- **CORS** – Cross-Origin Request Handling  
-
-### **Deployment** ☁️  
-- **Render** – Backend Hosting  
-- **Vercel/Netlify** – Frontend Hosting  
+- [Features](#features)  
+- [Architecture & Tech Stack](#architecture--tech-stack)  
+- [Repository Structure](#repository-structure)  
+- [Getting Started](#getting-started)  
+  - [Prerequisites](#prerequisites)  
+  - [Installation](#installation)  
+  - [Running Locally](#running-locally)  
+  - [Configuration](#configuration)  
+- [Usage](#usage)  
+- [Roadmap](#roadmap)  
+- [Contributing](#contributing)  
+- [License](#license)  
+- [Contact](#contact)
 
 ---
 
-## **📸 Screenshots**  
+## ✅ Features
 
-![Homepage](https://your-image-url.com) <!-- Add images of your project -->
-![Editor Page](https://your-image-url.com)  
+- ⚡ **Real-Time Code Sharing**: Instant updates across all connected clients.  
+- 🔐 **Multiple Room Support**: Create or join private rooms via unique room IDs.  
+- 👀 **Live Cursor Tracking** *(Planned)*  
+- 🎨 **Syntax Highlighting** with CodeMirror  
+- 💾 **Persistent Sessions**: Code stays for new participants  
+- 👥 **User Presence Detection**  
+- 📋 **Clipboard Sharing**: Copy room IDs in one click  
+- 🔌 **Low-Latency WebSockets** with Socket.io
 
 ---
 
-## **🛠 Installation & Setup**  
+## 🏗️ Architecture & Tech Stack
 
-### **1️⃣ Clone the Repository**  
-```bash
-git clone https://github.com/your-username/devsync.git
-cd devsync
+| Layer      | Technology                                                   |
+|------------|--------------------------------------------------------------|
+| Frontend   | React · Vite · CodeMirror · React Router · React Toastify   |
+| Backend    | Node.js · Express · Socket.io · CORS                        |
+| Deployment | Vercel/Netlify (frontend) · Render (backend)                |
+
+---
+
+## 📁 Repository Structure
+
+```text
+DevSync/
+├─ Frontend/
+│  ├─ public/           # Static assets & index.html
+│  ├─ src/
+│  │  ├─ components/    # React components
+│  │  ├─ contexts/      # React Context for socket & auth
+│  │  ├─ pages/         # Route components (Home, Editor)
+│  │  ├─ utils/         # Helper functions (socket setup)
+│  │  ├─ App.jsx
+│  │  └─ main.jsx
+│  ├─ .env              # Frontend environment variables
+│  ├─ server.js         # Dev proxy / CORS server (optional)
+│  ├─ package.json
+│  └─ vite.config.js
+├─ .gitattributes
+└─ README.md
 ```
 
-### **2️⃣ Install Dependencies**  
+---
+
+## 🚀 Getting Started
+
+### 🔧 Prerequisites
+
+- Node.js **v16+**
+- npm or yarn
+
+---
+
+### 🛠️ Installation
+
 ```bash
-npm install   # Install both frontend & backend dependencies
+# Clone the repository
+git clone https://github.com/Abhinav20singh03/DevSync.git
+cd DevSync
 ```
 
-### **3️⃣ Start Backend** 🖥  
+---
+
+### ▶️ Running Locally
+
+#### 1. Install root-level dependencies (if any):
+
 ```bash
-cd backend
-node server.js   # Start Express & Socket.io server
+npm install
 ```
 
-### **4️⃣ Start Frontend** 🌐  
+#### 2. Start Frontend
+
 ```bash
-cd frontend
-npm run dev   # Runs the React app
+cd Frontend
+npm install
+npm run dev
 ```
 
-🔹 **Your app will be running at**: `http://localhost:5173`  
-🔹 **Backend is running on**: `http://localhost:3000`  
+Visit: [http://localhost:5173](http://localhost:5173)
+
+#### 3. Start Backend (if using proxy server)
+
+```bash
+cd Frontend
+node server.js
+```
+
+Visit: [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## **🌍 Deployment**  
+## ⚙️ Configuration
 
-### **Backend Deployment (Render)**  
-1. Push your backend code to **GitHub**.  
-2. Create a new **Web Service** on **Render**.  
-3. Set the **Build Command**:  
-   ```bash
-   npm install && npm run build
-   ```
-4. Set the **Start Command**:  
-   ```bash
-   node server.js
-   ```
-5. Add **Environment Variables**:
-   ```
-   ENABLE_WEBSOCKETS = true
-   PORT = 3000
-   ```
+### Frontend `.env`
 
-### **Frontend Deployment (Vercel/Netlify)**  
-1. Deploy the frontend repo using **Vercel** or **Netlify**.  
-2. Set `VITE_BACKEND_URL` in `.env`:  
-   ```env
-   VITE_BACKEND_URL="https://your-backend-url.onrender.com"
-   ```
-3. **Deploy & Share the Link!** 🚀  
+```env
+VITE_BACKEND_URL="http://localhost:3000"
+```
+
+### Backend Environment Variables
+
+```bash
+ENABLE_WEBSOCKETS=true
+PORT=3000
+```
 
 ---
 
+## 🧪 Usage
 
-
-## **🛠 Roadmap & Future Features**
-✅ **Real-time Cursor Position Tracking**  
-✅ **Multi-Language Support (Python, Java, etc.)**  
-✅ **Dark/Light Mode Toggle**  
-✅ **Chat Functionality**  
-✅ **GitHub OAuth for Authentication**  
+1. Open the app in your browser.  
+2. Create a new room or join an existing Room ID.  
+3. Start typing — code syncs in real time.  
+4. Share the Room ID with collaborators.
 
 ---
 
-## **🤝 Contributing**
-We welcome contributions!  
+## 🛣️ Roadmap
 
-1. **Fork the repo**  
-2. **Create a feature branch:** `git checkout -b feature-name`  
-3. **Commit changes:** `git commit -m "Added new feature"`  
-4. **Push to GitHub:** `git push origin feature-name`  
-5. **Open a Pull Request**  
-
----
-
-## **📝 License**
-This project is licensed under the **MIT License**.  
+- [ ] Real-time cursor position tracking  
+- [ ] Multi-language support (Python, Java, etc.)  
+- [ ] Dark/Light mode toggle  
+- [ ] In-app chat functionality  
+- [ ] GitHub OAuth authentication
 
 ---
 
-## **💡 Inspiration & Credits**
-Inspired by **Google Docs for Coding**. Built using **Socket.io for real-time collaboration**. 🚀  
+## 🤝 Contributing
+
+Contributions are welcome!  
+
+```bash
+# Fork the repository
+# Create your feature branch
+git checkout -b feature/your-feature
+
+# Commit changes
+git commit -m "Add your feature"
+
+# Push changes
+git push origin feature/your-feature
+
+# Open a Pull Request
+```
+
+Please follow the standard GitHub Flow.
 
 ---
 
-## **📩 Contact**
-💻 **Developer:** Abhinav Singh
-📧 **Email:** abhinav20singh03@gmail.com
-🐙 **GitHub:** [Your GitHub Profile](https://github.com/Abhinav20singh03)  
+## 📄 License
+
+This project is licensed under the **MIT License**.
 
 ---
 
-### 🎯 **Made with ❤️ for developers to code together in real-time!** 🚀  
----
+## 📬 Contact
+
+**Developer**: Abhinav Singh  
+📧 Email: [abhinav20singh03@gmail.com](mailto:abhinav20singh03@gmail.com)  
+🐙 GitHub: [@Abhinav20singh03](https://github.com/Abhinav20singh03)
